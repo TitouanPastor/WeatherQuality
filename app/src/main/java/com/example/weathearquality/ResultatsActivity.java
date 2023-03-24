@@ -1,5 +1,6 @@
 package com.example.weathearquality;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -23,15 +25,20 @@ public class ResultatsActivity extends AppCompatActivity {
     private TextView tTemperature;
     private TextView tQualiteAir;
 
+    String notePollution;
+
     public static final String TAG = "TAG";
     static final String BASE_URL = "https://api.waqi.info/feed/";
     Retrofit retrofit;
     WeatherAPI weatherAPI;
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.resultats_activity);
+        context = this;
 
         // Récupération des vues du formulaire
         tVille = findViewById(R.id.ville_resultats);
@@ -66,11 +73,34 @@ public class ResultatsActivity extends AppCompatActivity {
                     JsonObject jsonTemperature = jsonIaqi.getAsJsonObject("t");
                     String temperature = jsonTemperature.get("v").getAsString();
 
-                    tTemperature.setText(temperature);
+                    tTemperature.setText(temperature + " °C");
 
-                    String notePollution = jsonData.get("aqi").getAsString();
+                    notePollution = jsonData.get("aqi").getAsString();
                     tQualiteAir.setText(notePollution);
 
+                    View rectangle = findViewById(R.id.rectangle_resultat);
+                    TextView rectangleText = findViewById(R.id.rectangle_text);
+                    int note= Integer.parseInt(notePollution);
+                    if (note < 50) {
+                        rectangle.setBackgroundColor(ContextCompat.getColor( context, R.color.green));
+                        rectangleText.setText("Bon");
+                    } else if (note < 100) {
+                        rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow));
+                        rectangleText.setText("Moyen");
+                    } else if (note < 150) {
+                        rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
+                        rectangleText.setText("Mauvais");
+                    } else if (note < 200) {
+                        rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
+                        rectangleText.setText("Très mauvais");
+                    } else if (note < 300) {
+                        rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.purple));
+                        rectangleText.setText("Dangereux");
+                    } else {
+                        rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.black));
+                        rectangleText.setText("Très dangereux");
+                        rectangleText.setTextColor(ContextCompat.getColor(context, R.color.white));
+                    }
 
                 }
             }
@@ -85,7 +115,9 @@ public class ResultatsActivity extends AppCompatActivity {
         tVille.setText(ville);
         if (!afficherTemperature) {
             tTemperature.setVisibility(View.GONE);
-
         }
+
+        // Affichage rectangle en fonction du resultat de la qualite de l'air
+
     }
 }

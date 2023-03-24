@@ -11,27 +11,93 @@
         android:layout_height="wrap_content"
         android:text="@string/titre_resultat_activity"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"/>
 
-    <TextView
-        android:id="@+id/ville_resultats"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/resultat_ville"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
-    <TextView
-        android:id="@+id/temperature_resultats"
+        <TextView
+            android:id="@+id/ville_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resultat_ville"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/ville_resultats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/resultat_temperature"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
-    <TextView
-        android:id="@+id/qualite_air_resultats"
+        <TextView
+            android:id="@+id/temperature_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resultat_temperature"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/temperature_resultats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/resultat_qualite_air"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/qualite_air_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resultat_qualite_air"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/qualite_air_resultats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <View
+            android:id="@+id/rectangle_resultat"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@color/red"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/rectangle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:text="Texte par défaut"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
