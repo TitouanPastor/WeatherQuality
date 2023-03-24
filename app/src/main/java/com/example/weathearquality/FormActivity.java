@@ -73,6 +73,7 @@ public class FormActivity extends AppCompatActivity {
 
             case R.id.histMenu:
                 Intent intentHist = new Intent(FormActivity.this, HistoriqueActivity.class);
+                intentHist.putExtra("utilisateur", getIntent().getStringExtra("utilisateur"));
                 startActivity(intentHist);
                 break;
 

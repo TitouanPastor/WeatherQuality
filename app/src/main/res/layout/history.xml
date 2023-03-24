@@ -16,7 +16,7 @@
 
     <!-- Liste des recherches précédentes -->
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/historiqueListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null"

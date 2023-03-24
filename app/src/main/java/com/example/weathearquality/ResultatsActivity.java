@@ -63,7 +63,7 @@ public class ResultatsActivity extends AppCompatActivity {
         // Récupération des données passées en paramètre
         Intent intent = getIntent();
         String ville = intent.getStringExtra("ville");
-        boolean afficherTemperature = intent.getBooleanExtra("afficherTemperature", false);
+        boolean afficherTemperature = intent.getBooleanExtra("afficherTemperature", true);
         String utilisateur = intent.getStringExtra("utilisateur");
 
         //API
@@ -188,6 +188,7 @@ public class ResultatsActivity extends AppCompatActivity {
 
             case R.id.histMenu:
                 Intent intentHist = new Intent(ResultatsActivity.this, HistoriqueActivity.class);
+                intentHist.putExtra("utilisateur", getIntent().getStringExtra("utilisateur"));
                 startActivity(intentHist);
                 break;
 
