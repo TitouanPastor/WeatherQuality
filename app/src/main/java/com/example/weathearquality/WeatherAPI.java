@@ -6,8 +6,8 @@ import retrofit2.http.Path;
 
 import com.google.gson.JsonElement;
 
-public interface weatherAPI {
+public interface WeatherAPI {
 
-    @GET("https://api.waqi.info/feed/{ville}/?token=be7e58e0cac0ed2d5b17369bf1fee76491a7db24")
+    @GET("{ville}/?token=be7e58e0cac0ed2d5b17369bf1fee76491a7db24")
     Call<JsonElement> dataVille(@Path(("ville")) String ville);
 }
