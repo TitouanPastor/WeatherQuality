@@ -36,6 +36,13 @@ public class HistoriqueActivity extends AppCompatActivity {
         AdapterHistoriqueList adapterHistoriqueList = new AdapterHistoriqueList(this, R.layout.historique_list_view, bdd.getVille(utilisateur), bdd.getDate(utilisateur));
         listView.setAdapter(adapterHistoriqueList);
 
+        //en cliquant sur un item, on va sur la page des résultats avec la ville
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent1 = new Intent(HistoriqueActivity.this, ResultatsActivity.class);
+            intent1.putExtra("ville", arrayListVille.get(position));
+            intent1.putExtra("utilisateur", utilisateur);
+            startActivity(intent1);
+        });
     }
 
     @Override

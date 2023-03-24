@@ -1,6 +1,8 @@
 package com.example.weathearquality;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -43,7 +45,7 @@ public class ClientDbHelper extends SQLiteOpenHelper {
     public ArrayList<String> getVille(String utilisateur) {
         ArrayList<String> arrayListVille = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT ville FROM historique WHERE utilisateur = '" + utilisateur + "'";
+        String query = "SELECT ville FROM historique WHERE utilisateur = '" + utilisateur + "' order by date desc";
         android.database.Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
@@ -58,7 +60,7 @@ public class ClientDbHelper extends SQLiteOpenHelper {
     public ArrayList<String> getDate(String utilisateur) {
         ArrayList<String> arrayListDate = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT date FROM historique WHERE utilisateur = '" + utilisateur + "'";
+        String query = "SELECT date FROM historique WHERE utilisateur = '" + utilisateur + "' order by date desc";
         android.database.Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
@@ -69,4 +71,5 @@ public class ClientDbHelper extends SQLiteOpenHelper {
         db.close();
         return arrayListDate;
     }
+
 }
