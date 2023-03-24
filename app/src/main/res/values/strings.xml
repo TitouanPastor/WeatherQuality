@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">WeatherQuality</string>
+    <string name="bouton_valider">Valider</string>
+    <string name="afficher_temperature_label">Afficher la température ?</string>
+    <string name="exemple_ville">Ex: Paris</string>
+    <string name="titre_formulaire">Pollution de l\'air</string>
+    <string name="demander_ville_label">Choissisez une ville :</string>
+    <string name="titre_resultat_activity">Résultats de votre recherche</string>
+    <string name="resultat_ville">Ville :</string>
+    <string name="resultat_temperature">Température : </string>
+    <string name="resultat_qualite_air">Qualité de l\'air :</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="nom_utilisateur">Nom d\'utilisateur</string>
+    <string name="titre_connexion">Se connecter</string>
+    <string name="bouton_connexion">Connexion</string>
+    <string name="bouton_inscription">Inscription</string>
+    <string name="titre_inscrire">S\'inscrire</string>
+    <string name="button_inscription">Inscription</string>
+    <string name="button_delete_history">Supprimer l\'historique</string>
+    <string name="titre_historique">Historique de vos recherches</string>
+    <string name="bienvenue">Bienvenue : </string>
+
+
+</resources>

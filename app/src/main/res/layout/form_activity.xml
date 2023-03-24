@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/message_bienvenue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bienvenue"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/titre_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message_bienvenue"
+        android:text="@string/titre_formulaire"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/ville_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titre_text_view"
+        android:text="@string/demander_ville_label" />
+
+    <EditText
+        android:id="@+id/ville_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ville_label"
+        android:hint="@string/exemple_ville" />
+
+    <TextView
+        android:id="@+id/afficher_temperature_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ville_edit_text"
+        android:text="@string/afficher_temperature_label" />
+
+    <RadioGroup
+        android:id="@+id/temperature_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/afficher_temperature_label"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/ouiButtonRadio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Oui" />
+
+        <RadioButton
+            android:id="@+id/nonButtonRadio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Non" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/boutonValider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bouton_valider"
+        android:layout_below="@id/temperature_radio_group" />
+
+</RelativeLayout>
+
