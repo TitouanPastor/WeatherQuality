@@ -2,17 +2,26 @@ package com.example.weathearquality;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +49,11 @@ public class ResultatsActivity extends AppCompatActivity {
         setContentView(R.layout.resultats_activity);
         context = this;
 
+        //Création de la base de données si elle existe pas
+        ClientDbHelper bdd = new ClientDbHelper(this);
+        SQLiteDatabase bd = bdd.getWritableDatabase();
+
+
         // Récupération des vues du formulaire
         tVille = findViewById(R.id.ville_resultats);
         tTemperature = findViewById(R.id.temperature_resultats);
@@ -49,6 +63,7 @@ public class ResultatsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String ville = intent.getStringExtra("ville");
         boolean afficherTemperature = intent.getBooleanExtra("afficherTemperature", false);
+        String utilisateur = intent.getStringExtra("utilisateur");
 
         //API
 
@@ -102,6 +117,17 @@ public class ResultatsActivity extends AppCompatActivity {
                         rectangleText.setTextColor(ContextCompat.getColor(context, R.color.white));
                     }
 
+                    //Insertion dans la base de données de la ville et de la date actuelle dans la table historique
+                    //Insertion des valeurs dans la base de données
+                    ContentValues valuesHistorique = new ContentValues();
+                    valuesHistorique.put("utilisateur", utilisateur);
+                    valuesHistorique.put("ville", ville);
+                    //Insertion la date dans la forme mm/dd/yy hh:mm
+                    Date date = new Date();
+                    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy hh:mm");
+                    String formattedDate = formatter.format(date);
+                    valuesHistorique.put("date", formattedDate);
+                    bd.insert("historique", null, valuesHistorique);
                 }
             }
 
@@ -119,5 +145,31 @@ public class ResultatsActivity extends AppCompatActivity {
 
         // Affichage rectangle en fonction du resultat de la qualite de l'air
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflaterMenu  = getMenuInflater();
+        inflaterMenu.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+
+            case R.id.histMenu:
+                Intent intentHist = new Intent(ResultatsActivity.this, HistoriqueActivity.class);
+                startActivity(intentHist);
+                break;
+
+            case R.id.deconnectMenu:
+                Intent intent = new Intent(ResultatsActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.quitMenu:
+                System.exit(0);
+                break;
+        }
+        return true;
     }
 }

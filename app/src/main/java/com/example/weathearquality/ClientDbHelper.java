@@ -6,14 +6,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ClientDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "wheathearQuality.db";
+    public static final int DATABASE_VERSION = 2;
+    public static final String DATABASE_NAME = "weatherQuality.db";
 
-    public final String SQL_CREATE =
-            "CREATE TABLE utilisateur (id INTEGER PRIMARY KEY AUTOINCREMENT, utilisateur TEXT, motdepasse TEXT);";
+    public final String SQL_CREATE_USER =
+            "CREATE TABLE utilisateur (idUser INTEGER PRIMARY KEY AUTOINCREMENT, utilisateur TEXT, motdepasse TEXT);";
 
-    public final String SQL_DELETE =
+    public final String SQL_CREATE_HIST =
+            "CREATE TABLE historique (idHistorique INTEGER PRIMARY KEY AUTOINCREMENT, utilisateur TEXT, ville TEXT, date TEXT);";
+
+    public final String SQL_DELETE_USER =
             "DROP TABLE IF EXISTS utilisateur";
+
+    public final String SQL_DELETE_HIST =
+            "DROP TABLE IF EXISTS historique";
 
     public ClientDbHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -21,12 +27,14 @@ public class ClientDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE);
+        db.execSQL(SQL_CREATE_USER);
+        db.execSQL(SQL_CREATE_HIST);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE);
+        db.execSQL(SQL_DELETE_USER);
+        db.execSQL(SQL_DELETE_HIST);
         onCreate(db);
     }
 }
