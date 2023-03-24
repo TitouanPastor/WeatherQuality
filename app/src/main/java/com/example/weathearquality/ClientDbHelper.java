@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class ClientDbHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 2;
@@ -36,5 +38,35 @@ public class ClientDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_USER);
         db.execSQL(SQL_DELETE_HIST);
         onCreate(db);
+    }
+
+    public ArrayList<String> getVille(String utilisateur) {
+        ArrayList<String> arrayListVille = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT ville FROM historique WHERE utilisateur = '" + utilisateur + "'";
+        android.database.Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                arrayListVille.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return arrayListVille;
+    }
+
+    public ArrayList<String> getDate(String utilisateur) {
+        ArrayList<String> arrayListDate = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT date FROM historique WHERE utilisateur = '" + utilisateur + "'";
+        android.database.Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                arrayListDate.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return arrayListDate;
     }
 }

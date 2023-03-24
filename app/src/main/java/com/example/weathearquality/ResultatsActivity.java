@@ -159,6 +159,7 @@ public class ResultatsActivity extends AppCompatActivity {
 
             case R.id.histMenu:
                 Intent intentHist = new Intent(ResultatsActivity.this, HistoriqueActivity.class);
+                intentHist.putExtra("utilisateur", getIntent().getStringExtra("utilisateur"));
                 startActivity(intentHist);
                 break;
 
