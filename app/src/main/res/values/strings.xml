@@ -21,6 +21,31 @@
     <string name="bienvenue">Bienvenue : </string>
     <string name="deconnectTextMenu">Se déconnecter</string>
     <string name="quitTextMenu">Quitter</string>
+    <string name="chargement">Chargement...</string>
+    <string name="QABon">Qualité de l\'air bonne</string>
+    <string name="QAMoyen">Qualité de l\'air modérée</string>
+    <string name="QAMauvais">Risque de santé pour les personnes à risque</string>
+    <string name="QATresMauvais">Très pollué : Risque de santé</string>
+    <string name="QADangereux">Très pollué : Fort risque de santé</string>
+    <string name="QATresDangereux">Qualité de l\'air dangereux, prbleme de santé sérieux</string>
+    <string name="ImplicationSante">Implication sur la santé : </string>
+    <string name="Conseil">Conseil à appliquer :</string>
+    <string name="HIBon">La qualité de l\'air est jugée satisfaisante, et la pollution de l\'air pose peu ou pas de risque.</string>
+    <string name="HIMoyen">La qualité de l\'air est acceptable. Cependant, pour certains polluants, il peut y avoir un risque sur la santé pour un très petit nombre de personnes habituellement sensibles à la pollution atmosphérique.</string>
+    <string name="HIMauvais">La qualité de l\'air est acceptable; Cependant, pour certains polluants, il peut y avoir un problème de santé modérée pour un très petit nombre de personnes qui sont particulièrement sensibles à la pollution de l\'air.</string>
+    <string name="HITresMauvais">Tout le monde peut commencer à ressentir des effets sur la santé; les membres des groupes sensibles peuvent ressentir des effets de santé plus graves.</string>
+    <string name="HIDangereux">Avertissements de santé. Toute la population est plus susceptible d\'être affecté.</string>
+    <string name="HITresDangereux">Alerte de santé: tout le monde peut ressentir des effets de santé plus graves.</string>
+    <string name="CSBon">Aucun</string>
+    <string name="CSMoyen">Les enfants et les adultes actifs, ainsi que les personnes souffrant d\'une maladie respiratoire, telle que l\'asthme, doivent éviter les efforts prolongés en plein air ; toutes les autres personnes, en particulier les enfants, doivent limiter les efforts prolongés en plein air.</string>
+    <string name="CSDangereux">Tout le monde devrait éviter tout effort en plein air</string>
+
+
+
+
+
+
+
 
 
 </resources>

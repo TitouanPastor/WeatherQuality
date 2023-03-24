@@ -94,29 +94,56 @@ public class ResultatsActivity extends AppCompatActivity {
                     notePollution = jsonData.get("aqi").getAsString();
                     tQualiteAir.setText(notePollution);
 
+
                     View rectangle = findViewById(R.id.rectangle_resultat);
                     TextView rectangleText = findViewById(R.id.rectangle_text);
+                    TextView implicationSante = findViewById(R.id.implicationSante);
+                    TextView conseil = findViewById(R.id.conseil);
+
                     int note= Integer.parseInt(notePollution);
                     if (note < 50) {
                         rectangle.setBackgroundColor(ContextCompat.getColor( context, R.color.green));
-                        rectangleText.setText("Bon");
+                        rectangleText.setText(getString(R.string.QABon));
+                        implicationSante.setText(implicationSante.getText() + getString(R.string.HIBon));
+                        conseil.setText(conseil.getText() + getString(R.string.CSBon));
+
                     } else if (note < 100) {
                         rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow));
-                        rectangleText.setText("Moyen");
+                        rectangleText.setText(getString(R.string.QAMoyen));
+                        implicationSante.setText(implicationSante.getText() + getString(R.string.HIMoyen));
+                        conseil.setText(conseil.getText() + getString(R.string.CSMoyen));
+
                     } else if (note < 150) {
                         rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
-                        rectangleText.setText("Mauvais");
+                        rectangleText.setText(getString(R.string.QAMauvais));
+                        implicationSante.setText(implicationSante.getText() + getString(R.string.HIMauvais));
+                        conseil.setText(conseil.getText() + getString(R.string.CSMoyen));
+
                     } else if (note < 200) {
                         rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
-                        rectangleText.setText("Très mauvais");
+                        rectangleText.setText(getString(R.string.QATresMauvais));
+                        implicationSante.setText(implicationSante.getText() + getString(R.string.HITresMauvais));
+                        conseil.setText(conseil.getText() + getString(R.string.HIMoyen));
+
                     } else if (note < 300) {
                         rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.purple));
-                        rectangleText.setText("Dangereux");
+                        rectangleText.setText(getString(R.string.QADangereux));
+                        implicationSante.setText(implicationSante.getText() + getString(R.string.CSDangereux));
+
                     } else {
                         rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.black));
-                        rectangleText.setText("Très dangereux");
+                        rectangleText.setText(getString(R.string.QATresDangereux));
                         rectangleText.setTextColor(ContextCompat.getColor(context, R.color.white));
+                        implicationSante.setText(implicationSante.getText() + getString(R.string.HITresDangereux));
+                        conseil.setText(conseil.getText() + getString(R.string.CSDangereux));
+
                     }
+
+
+
+
+
+
 
                     //Insertion dans la base de données de la ville et de la date actuelle dans la table historique
                     //Insertion des valeurs dans la base de données
@@ -141,6 +168,8 @@ public class ResultatsActivity extends AppCompatActivity {
         // Affichage des données
         tVille.setText(ville);
         if (!afficherTemperature) {
+            TextView lTemperature =  findViewById(R.id.temperature_label);
+            lTemperature.setVisibility(View.GONE);
             tTemperature.setVisibility(View.GONE);
         }
 
