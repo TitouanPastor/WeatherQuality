@@ -97,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()){
-            Toast.makeText(this, "Connexion OK", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Connexion établie", Toast.LENGTH_SHORT).show();
 // Traitement si le réseau est OK
         }
         else
         {
-            Toast.makeText(this, "Pas de Connexion", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Connexion impossible", Toast.LENGTH_SHORT).show();
         }
 
 
