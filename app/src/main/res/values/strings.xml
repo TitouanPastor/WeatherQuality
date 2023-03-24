@@ -19,6 +19,8 @@
     <string name="button_delete_history">Supprimer l\'historique</string>
     <string name="titre_historique">Historique de vos recherches</string>
     <string name="bienvenue">Bienvenue : </string>
+    <string name="deconnectTextMenu">Se déconnecter</string>
+    <string name="quitTextMenu">Quitter</string>
 
 
 </resources>
