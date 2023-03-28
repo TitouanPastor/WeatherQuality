@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">WeatherQuality</string>
-    <string name="bouton_valider">Valider</string>
+    <string name="app_name" translatable="false">WeatherQuality</string>
     <string name="afficher_temperature_label">Afficher la température ?</string>
     <string name="exemple_ville">Ex: Paris</string>
     <string name="titre_formulaire">Pollution de l\'air</string>
@@ -27,7 +26,7 @@
     <string name="QAMauvais">Risque de santé pour les personnes à risque</string>
     <string name="QATresMauvais">Très pollué : Risque de santé</string>
     <string name="QADangereux">Très pollué : Fort risque de santé</string>
-    <string name="QATresDangereux">Qualité de l\'air dangereux, prbleme de santé sérieux</string>
+    <string name="QATresDangereux">Qualité de l\'air dangereux, problème de santé sérieux</string>
     <string name="ImplicationSante">Implication sur la santé : </string>
     <string name="Conseil">Conseil à appliquer :</string>
     <string name="HIBon">La qualité de l\'air est jugée satisfaisante, et la pollution de l\'air pose peu ou pas de risque.</string>
@@ -39,13 +38,8 @@
     <string name="CSBon">Aucun</string>
     <string name="CSMoyen">Les enfants et les adultes actifs, ainsi que les personnes souffrant d\'une maladie respiratoire, telle que l\'asthme, doivent éviter les efforts prolongés en plein air ; toutes les autres personnes, en particulier les enfants, doivent limiter les efforts prolongés en plein air.</string>
     <string name="CSDangereux">Tout le monde devrait éviter tout effort en plein air</string>
-
-
-
-
-
-
-
+    <string name="VilleNonTrouvee">Ville non trouvée ! </string>
+    <string name="bouton_valider">Valider</string>
 
 
 </resources>
