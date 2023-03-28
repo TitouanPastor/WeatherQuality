@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +18,8 @@ import java.util.UUID;
 
 public class HistoriqueActivity extends AppCompatActivity {
 
+    private String utilisateur;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +30,7 @@ public class HistoriqueActivity extends AppCompatActivity {
 
         //Récupération de l'utilisateur
         Intent intent = getIntent();
-        String utilisateur = intent.getStringExtra("utilisateur");
+        utilisateur = intent.getStringExtra("utilisateur");
 
         //Création de la liste d'historique
         ListView listView = findViewById(R.id.historiqueListView);
@@ -43,6 +46,15 @@ public class HistoriqueActivity extends AppCompatActivity {
             intent1.putExtra("utilisateur", utilisateur);
             startActivity(intent1);
         });
+
+        //En cliquant sur le bouton delete_button, on supprime tout l'historique
+        Button btn_delete = findViewById(R.id.delete_button);
+        btn_delete.setOnClickListener(v -> {
+            bdd.deleteHistorique(utilisateur);
+            Intent intent1 = new Intent(HistoriqueActivity.this, HistoriqueActivity.class);
+            intent1.putExtra("utilisateur", utilisateur);
+            startActivity(intent1);
+        });
     }
 
     @Override
@@ -55,13 +67,19 @@ public class HistoriqueActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
 
+            case R.id.homeMenu:
+                Intent intentForm = new Intent(HistoriqueActivity.this, FormActivity.class);
+                intentForm.putExtra("utilisateur", utilisateur);
+                startActivity(intentForm);
+                break;
+
             case R.id.histMenu:
                 Toast.makeText(this, R.string.dejaDansHistorique, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.deconnectMenu:
-                Intent intent = new Intent(HistoriqueActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent intent2 = new Intent(HistoriqueActivity.this, MainActivity.class);
+                startActivity(intent2);
                 break;
 
             case R.id.quitMenu:
