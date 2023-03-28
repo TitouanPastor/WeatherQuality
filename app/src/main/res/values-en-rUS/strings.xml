@@ -41,4 +41,6 @@
     <string name="CSDangereux">Everyone should avoid all outdoor exertion</string>
     <string name="VilleNonTrouvee">City not found !</string>
     <string name="bouton_valider">Validate</string>
+    <string name="oui">Yes</string>
+    <string name="non">No</string>
 </resources>

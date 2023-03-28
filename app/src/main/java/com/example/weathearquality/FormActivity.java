@@ -50,14 +50,18 @@ public class FormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Récupération des données saisies
-                String ville = villeEditText.getText().toString();
-                boolean afficherTemperature = ouiRadioButton.isChecked();
-                // Création de l'intention pour passer à l'activité suivante
-                Intent intent = new Intent(FormActivity.this, ResultatsActivity.class);
-                intent.putExtra("utilisateur", utilisateur);
-                intent.putExtra("ville", ville);
-                intent.putExtra("afficherTemperature", afficherTemperature);
-                startActivity(intent);
+                if (!villeEditText.getText().toString().isEmpty()) {
+                    String ville = villeEditText.getText().toString();
+                    boolean afficherTemperature = ouiRadioButton.isChecked();
+                    // Création de l'intention pour passer à l'activité suivante
+                    Intent intent = new Intent(FormActivity.this, ResultatsActivity.class);
+                    intent.putExtra("utilisateur", utilisateur);
+                    intent.putExtra("ville", ville);
+                    intent.putExtra("afficherTemperature", afficherTemperature);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(FormActivity.this, "Veuillez saisir une ville", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

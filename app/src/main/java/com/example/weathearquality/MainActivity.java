@@ -68,26 +68,27 @@ public class MainActivity extends AppCompatActivity {
                 String utilisateur = vUtilisateur.getText().toString();
                 String motDePasse = vMotDePasse.getText().toString();
 
+                if(!utilisateur.isEmpty() && !motDePasse.isEmpty()) {
+                    String[] colonnes = {"utilisateur"};
+                    String[] args = {utilisateur};
+                    Cursor req = bd.query("utilisateur", colonnes, "utilisateur = ?", args, null, null, null);
 
-                String[] colonnes = {"utilisateur"};
-                String[] args = {utilisateur};
-                Cursor req = bd.query("utilisateur", colonnes, "utilisateur = ?", args, null, null, null);
+                    if (req.moveToFirst()) {
+                        // le curseur contient au moins une ligne
+                        TextView vErreur = findViewById(R.id.inscription_error);
+                        vErreur.setText("Cet utilisateur existe déjà ! Veuillez vous connectez");
+                    } else {
+                        //Insertion des valeurs dans la base de données
+                        ContentValues valuesInscription = new ContentValues();
+                        valuesInscription.put("utilisateur", utilisateur);
+                        valuesInscription.put("motDePasse", motDePasse);
 
-                if (req.moveToFirst()) {
-                    // le curseur contient au moins une ligne
-                    TextView vErreur = findViewById(R.id.inscription_error);
-                    vErreur.setText("Cet utilisateur existe déjà ! Veuillez vous connectez");
-                } else {
-                    //Insertion des valeurs dans la base de données
-                    ContentValues valuesInscription = new ContentValues();
-                    valuesInscription.put("utilisateur", utilisateur);
-                    valuesInscription.put("motDePasse", motDePasse);
-
-                    bd.insert("utilisateur", null, valuesInscription);
-                    // Création de l'intention pour passer à l'activité suivante
-                    Intent intent = new Intent(MainActivity.this, FormActivity.class);
-                    intent.putExtra("utilisateur", utilisateur);
-                    startActivity(intent);
+                        bd.insert("utilisateur", null, valuesInscription);
+                        // Création de l'intention pour passer à l'activité suivante
+                        Intent intent = new Intent(MainActivity.this, FormActivity.class);
+                        intent.putExtra("utilisateur", utilisateur);
+                        startActivity(intent);
+                    }
                 }
 
 

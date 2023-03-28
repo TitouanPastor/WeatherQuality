@@ -173,7 +173,7 @@ public class ResultatsActivity extends AppCompatActivity {
         });
 
         // Affichage des données
-        tVille.setText(ville);
+        tVille.setText(" "+ville);
         if (!afficherTemperature) {
 
             lTemperature.setVisibility(View.GONE);

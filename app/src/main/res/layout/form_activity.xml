@@ -54,14 +54,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Oui" />
+            android:checked="true"
+            android:text="@string/oui" />
 
         <RadioButton
             android:id="@+id/nonButtonRadio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Non" />
+            android:text="@string/non" />
     </RadioGroup>
 
     <Button

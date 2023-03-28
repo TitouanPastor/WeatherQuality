@@ -40,6 +40,8 @@
     <string name="CSDangereux">Tout le monde devrait éviter tout effort en plein air</string>
     <string name="VilleNonTrouvee">Ville non trouvée ! </string>
     <string name="bouton_valider">Valider</string>
+    <string name="oui">Oui</string>
+    <string name="non">Non</string>
 
 
 </resources>
