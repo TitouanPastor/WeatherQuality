@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Logo ou image de l'application -->
 
     <!-- Formulaire de connexion -->
     <TextView
