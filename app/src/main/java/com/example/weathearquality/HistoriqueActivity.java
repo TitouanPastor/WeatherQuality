@@ -56,7 +56,7 @@ public class HistoriqueActivity extends AppCompatActivity {
         switch(item.getItemId()) {
 
             case R.id.histMenu:
-                Toast.makeText(this, "Vous êtes déjà sur l'historique", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.dejaDansHistorique, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.deconnectMenu:

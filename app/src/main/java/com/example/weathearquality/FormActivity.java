@@ -60,7 +60,7 @@ public class FormActivity extends AppCompatActivity {
                     intent.putExtra("afficherTemperature", afficherTemperature);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(FormActivity.this, "Veuillez saisir une ville", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormActivity.this, R.string.choisirVille, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -42,6 +42,11 @@
     <string name="bouton_valider">Valider</string>
     <string name="oui">Oui</string>
     <string name="non">Non</string>
+    <string name="dejaDansHistorique">Vous êtes déjà sur l\'historique</string>
+    <string name="connexionEtablie">Connexion établie</string>
+    <string name="connexionEchouee">Connexion impossible</string>
+    <string name="champVide">Veuillez remplir tous les champs</string>
+    <string name="choisirVille">Veuillez saisir une ville</string>
 
 
 </resources>

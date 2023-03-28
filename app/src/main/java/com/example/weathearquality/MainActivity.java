@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("utilisateur", utilisateur);
                         startActivity(intent);
                     }
+                }else{
+                    TextView vErreur = findViewById(R.id.inscription_error);
+                    vErreur.setText(R.string.champVide);
                 }
 
 
@@ -98,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()){
-            Toast.makeText(this, "Connexion établie", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.connexionEtablie, Toast.LENGTH_SHORT).show();
 // Traitement si le réseau est OK
         }
         else
         {
-            Toast.makeText(this, "Connexion impossible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.connexionEchouee, Toast.LENGTH_SHORT).show();
         }
 
 

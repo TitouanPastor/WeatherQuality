@@ -43,4 +43,9 @@
     <string name="bouton_valider">Validate</string>
     <string name="oui">Yes</string>
     <string name="non">No</string>
+    <string name="dejaDansHistorique">You are already on the history</string>
+    <string name="connexionEtablie">Connection established</string>
+    <string name="connexionEchouee">Unable to connect</string>
+    <string name="champVide">Please fill in all fields</string>
+    <string name="choisirVille">Please enter a city</string>
 </resources>
