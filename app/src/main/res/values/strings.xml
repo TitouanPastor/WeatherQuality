@@ -47,6 +47,7 @@
     <string name="connexionEchouee">Connexion impossible</string>
     <string name="champVide">Veuillez remplir tous les champs</string>
     <string name="choisirVille">Veuillez saisir une ville</string>
-
+    <string name="confirmer">Confirmer la supression ?"</string>
+    <string name="suppressionReussie">Suppression réussie</string>
 
 </resources>

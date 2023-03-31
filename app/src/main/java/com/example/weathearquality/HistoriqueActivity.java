@@ -1,5 +1,6 @@
 package com.example.weathearquality;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import java.util.UUID;
 public class HistoriqueActivity extends AppCompatActivity {
 
     private String utilisateur;
+    Context context;
+    ClientDbHelper bdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,8 @@ public class HistoriqueActivity extends AppCompatActivity {
         setContentView(R.layout.history);
 
         //Création de la base de données si elle existe pas
-        ClientDbHelper bdd = new ClientDbHelper(this);
+
+        bdd = new ClientDbHelper(this);
 
         //Récupération de l'utilisateur
         Intent intent = getIntent();
@@ -50,12 +54,28 @@ public class HistoriqueActivity extends AppCompatActivity {
         //En cliquant sur le bouton delete_button, on supprime tout l'historique
         Button btn_delete = findViewById(R.id.delete_button);
         btn_delete.setOnClickListener(v -> {
-            bdd.deleteHistorique(utilisateur);
-            Intent intent1 = new Intent(HistoriqueActivity.this, HistoriqueActivity.class);
-            intent1.putExtra("utilisateur", utilisateur);
-            startActivity(intent1);
+
+            Intent intent1 = new Intent(this, PopUpConfirmation.class);
+            startActivityForResult(intent1, 1);
+
+
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+            if (resultCode == RESULT_OK && requestCode == 1) {
+
+                bdd.deleteHistorique(utilisateur);
+                Intent intent2 = new Intent(HistoriqueActivity.this, HistoriqueActivity.class);
+                intent2.putExtra("utilisateur", utilisateur);
+                startActivity(intent2);
+
+                Toast.makeText(this, R.string.suppressionReussie, Toast.LENGTH_SHORT).show();
+            }
+        }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
