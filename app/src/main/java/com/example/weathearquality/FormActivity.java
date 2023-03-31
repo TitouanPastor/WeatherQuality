@@ -57,7 +57,7 @@ public class FormActivity extends AppCompatActivity {
                     Intent intent = new Intent(FormActivity.this, ResultatsActivity.class);
                     intent.putExtra("utilisateur", utilisateur);
                     intent.putExtra("ville", ville);
-                    intent.putExtra("afficherTemperature", afficherTemperature);
+                    intent.putExtra("afficherConseils", afficherTemperature);
                     startActivity(intent);
                 }else{
                     Toast.makeText(FormActivity.this, R.string.choisirVille, Toast.LENGTH_SHORT).show();

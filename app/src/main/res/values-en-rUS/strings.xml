@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WeatherQuality</string>
-    <string name="afficher_temperature_label">Display temperature ?</string>
+    <string name="afficher_conseil_label">Display a tips ?</string>
     <string name="exemple_ville">Ex : New York</string>
     <string name="titre_formulaire">Air Pollution</string>
     <string name="demander_ville_label">Choose a city :</string>

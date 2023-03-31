@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">WeatherQuality</string>
-    <string name="afficher_temperature_label">Afficher la température ?</string>
+    <string name="afficher_conseil_label">Afficher les conseils ?</string>
     <string name="exemple_ville">Ex: Paris</string>
     <string name="titre_formulaire">Pollution de l\'air</string>
     <string name="demander_ville_label">Choissisez une ville :</string>

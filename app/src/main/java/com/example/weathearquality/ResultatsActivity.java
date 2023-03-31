@@ -64,10 +64,11 @@ public class ResultatsActivity extends AppCompatActivity {
         tQualiteAir = findViewById(R.id.qualite_air_resultats);
         lTemperature = findViewById(R.id.temperature_label);
         lQualiteAir = findViewById(R.id.qualite_air_label);
+        
         // Récupération des données passées en paramètre
         Intent intent = getIntent();
         String ville = intent.getStringExtra("ville");
-        boolean afficherTemperature = intent.getBooleanExtra("afficherTemperature", true);
+        boolean afficherConseils = intent.getBooleanExtra("afficherConseils", true);
         String utilisateur = intent.getStringExtra("utilisateur");
 
         //API
@@ -174,10 +175,12 @@ public class ResultatsActivity extends AppCompatActivity {
 
         // Affichage des données
         tVille.setText(" "+ville);
-        if (!afficherTemperature) {
+        TextView implicationSante = findViewById(R.id.implicationSante);
+        TextView conseil = findViewById(R.id.conseil);
+        if (!afficherConseils) {
 
-            lTemperature.setVisibility(View.GONE);
-            tTemperature.setVisibility(View.GONE);
+            implicationSante.setVisibility(View.GONE);
+            conseil.setVisibility(View.GONE);
         }
 
         // Affichage rectangle en fonction du resultat de la qualite de l'air
