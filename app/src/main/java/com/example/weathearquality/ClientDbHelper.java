@@ -45,8 +45,8 @@ public class ClientDbHelper extends SQLiteOpenHelper {
     public ArrayList<String> getVille(String utilisateur) {
         ArrayList<String> arrayListVille = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT ville FROM historique WHERE utilisateur = '" + utilisateur + "' order by date desc";
-        android.database.Cursor cursor = db.rawQuery(query, null);
+        String query = "SELECT ville FROM historique WHERE utilisateur = ? order by date desc";
+        Cursor cursor = db.rawQuery(query, new String[] { utilisateur });
         if (cursor.moveToFirst()) {
             do {
                 arrayListVille.add(cursor.getString(0));
@@ -60,8 +60,8 @@ public class ClientDbHelper extends SQLiteOpenHelper {
     public ArrayList<String> getDate(String utilisateur) {
         ArrayList<String> arrayListDate = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT date FROM historique WHERE utilisateur = '" + utilisateur + "' order by date desc";
-        android.database.Cursor cursor = db.rawQuery(query, null);
+        String query = "SELECT date FROM historique WHERE utilisateur = ? order by date desc";
+        Cursor cursor = db.rawQuery(query, new String[] { utilisateur });
         if (cursor.moveToFirst()) {
             do {
                 arrayListDate.add(cursor.getString(0));
@@ -72,4 +72,10 @@ public class ClientDbHelper extends SQLiteOpenHelper {
         return arrayListDate;
     }
 
+
+    public void deleteHistorique(String utilisateur) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM historique WHERE utilisateur = '" + utilisateur + "'");
+        db.close();
+    }
 }

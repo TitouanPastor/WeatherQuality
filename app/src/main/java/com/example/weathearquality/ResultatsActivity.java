@@ -198,6 +198,12 @@ public class ResultatsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
+            case R.id.homeMenu:
+                Intent intentForm = new Intent(ResultatsActivity.this, FormActivity.class);
+                intentForm.putExtra("utilisateur", getIntent().getStringExtra("utilisateur"));
+                startActivity(intentForm);
+                break;
+
             case R.id.histMenu:
                 Intent intentHist = new Intent(ResultatsActivity.this, HistoriqueActivity.class);
                 intentHist.putExtra("utilisateur", getIntent().getStringExtra("utilisateur"));

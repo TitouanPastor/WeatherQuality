@@ -14,14 +14,6 @@
         android:textStyle="bold"
         android:padding="16dp" />
 
-    <!-- Liste des recherches précédentes -->
-    <ListView
-        android:id="@+id/historiqueListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:dividerHeight="0dp" />
-
     <!-- Bouton pour effacer l'historique -->
     <Button
         android:id="@+id/delete_button"
@@ -30,5 +22,19 @@
         android:text="@string/button_delete_history"
         android:layout_gravity="center"
         android:padding="16dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/grey"/>
+
+    <!-- Liste des recherches précédentes -->
+    <ListView
+        android:id="@+id/historiqueListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
 
 </LinearLayout>
