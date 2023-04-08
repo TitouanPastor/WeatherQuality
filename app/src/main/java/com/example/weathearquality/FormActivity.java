@@ -20,13 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FormActivity extends AppCompatActivity {
 
     private EditText villeEditText;
-
     private RadioButton ouiRadioButton;
-
-    private RadioButton nonRadioButton;
-
     private Button validerButton;
-
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,9 +29,11 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_activity);
 
+        // Récupération de l'utilisateur connecté
         Intent intent = getIntent();
         String utilisateur = intent.getStringExtra("utilisateur");
 
+        // Affichage du message de bienvenue
         TextView bienvenue = findViewById(R.id.message_bienvenue);
         bienvenue.setText(bienvenue.getText() + " " + utilisateur + " !");
 
@@ -49,11 +46,11 @@ public class FormActivity extends AppCompatActivity {
         validerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Récupération des données saisies
+                // Récupération des données saisies si la ville est saisie
                 if (!villeEditText.getText().toString().isEmpty()) {
                     String ville = villeEditText.getText().toString();
                     boolean afficherTemperature = ouiRadioButton.isChecked();
-                    // Création de l'intention pour passer à l'activité suivante
+                    // Création de l'intent pour passer à l'activité suivante
                     Intent intent = new Intent(FormActivity.this, ResultatsActivity.class);
                     intent.putExtra("utilisateur", utilisateur);
                     intent.putExtra("ville", ville);
@@ -65,12 +62,16 @@ public class FormActivity extends AppCompatActivity {
             }
         });
     }
+
+    // Gestion du menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflaterMenu  = getMenuInflater();
         inflaterMenu.inflate(R.menu.menu, menu);
         return true;
     }
+
+    // Gestion des actions du menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {

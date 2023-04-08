@@ -23,14 +23,16 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         int  orientation = getResources().getConfiguration().orientation;
+
+        // affichage différent selon l'orientation du téléphone
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.connexion);
         }else{
             setContentView(R.layout.connexion_land);
         }
-
 
         //Création de la base de données si elle existe pas
         ClientDbHelper bdd = new ClientDbHelper(this);
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("utilisateur", utilisateur);
                     startActivity(intent);
                 } else {
-                // Création de l'intention pour passer à l'activité suivante
+                // Création de l'intent pour passer à l'activité suivante
                 TextView vErreur = findViewById(R.id.connexion_error);
                 vErreur.setText("Indentifiant ou mot de passe invalide !");
                 }
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 String utilisateur = vUtilisateur.getText().toString();
                 String motDePasse = vMotDePasse.getText().toString();
 
+                // Vérification des données saisies
                 if(!utilisateur.isEmpty() && !motDePasse.isEmpty()) {
                     String[] colonnes = {"utilisateur"};
                     String[] args = {utilisateur};
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()){
             Toast.makeText(this, R.string.connexionEtablie, Toast.LENGTH_SHORT).show();
-// Traitement si le réseau est OK
+            // Traitement si le réseau est OK
         }
         else
         {
