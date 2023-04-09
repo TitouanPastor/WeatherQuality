@@ -18,6 +18,7 @@ public class AdapterHistoriqueList extends ArrayAdapter<String> {
     private final ArrayList<String> arrayListDate;
     private final int ressource;
 
+    // Constructeur de la classe AdapterHistoriqueList qui permet d'afficher la liste des villes et des dates
     public AdapterHistoriqueList(Context context, @LayoutRes int ressource, ArrayList<String> arrayListVille, ArrayList<String> arrayListDate) {
         super(context, ressource, arrayListVille);
         this.context = context;
@@ -26,6 +27,7 @@ public class AdapterHistoriqueList extends ArrayAdapter<String> {
         this.ressource = ressource;
     }
 
+    // Méthode getView qui permet d'afficher les éléments de la liste dans la vue
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

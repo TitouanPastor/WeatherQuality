@@ -29,7 +29,6 @@ public class HistoriqueActivity extends AppCompatActivity {
         setContentView(R.layout.history);
 
         //Création de la base de données si elle existe pas
-
         bdd = new ClientDbHelper(this);
 
         //Récupération de l'utilisateur
@@ -52,21 +51,20 @@ public class HistoriqueActivity extends AppCompatActivity {
         });
 
         //En cliquant sur le bouton delete_button, on supprime tout l'historique
+        //Appel de la popup de confirmation avec un resultat attendu
         Button btn_delete = findViewById(R.id.delete_button);
         btn_delete.setOnClickListener(v -> {
-
             Intent intent1 = new Intent(this, PopUpConfirmation.class);
             startActivityForResult(intent1, 1);
-
-
         });
     }
 
+    // Récupération du résultat de la popup de confirmation
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
             if (resultCode == RESULT_OK && requestCode == 1) {
-
+                // si l'utilisateur a cliqué sur oui, on supprime l'historique
                 bdd.deleteHistorique(utilisateur);
                 Intent intent2 = new Intent(HistoriqueActivity.this, HistoriqueActivity.class);
                 intent2.putExtra("utilisateur", utilisateur);
@@ -76,13 +74,15 @@ public class HistoriqueActivity extends AppCompatActivity {
             }
         }
 
-
+    // Création du menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflaterMenu  = getMenuInflater();
         inflaterMenu.inflate(R.menu.menu, menu);
         return true;
     }
+
+    // Gestion des actions du menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
@@ -103,7 +103,7 @@ public class HistoriqueActivity extends AppCompatActivity {
                 break;
 
             case R.id.quitMenu:
-                System.exit(0);
+                this.finishAffinity();
                 break;
         }
         return true;

@@ -88,7 +88,7 @@ public class FormActivity extends AppCompatActivity {
                 break;
 
             case R.id.quitMenu:
-                System.exit(0);
+                this.finishAffinity();
                 break;
         }
         return true;
