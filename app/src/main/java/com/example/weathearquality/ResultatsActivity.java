@@ -34,17 +34,13 @@ public class ResultatsActivity extends AppCompatActivity {
     private TextView tVille;
     private TextView tTemperature;
     private TextView tQualiteAir;
-
     private TextView lTemperature;
     private TextView lQualiteAir;
-
     String notePollution;
-
     public static final String TAG = "TAG";
     static final String BASE_URL = "https://api.waqi.info/feed/";
     Retrofit retrofit;
     WeatherAPI weatherAPI;
-
     Context context;
 
     @Override
@@ -72,19 +68,19 @@ public class ResultatsActivity extends AppCompatActivity {
         String utilisateur = intent.getStringExtra("utilisateur");
 
         //API
-
-
         this.retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        // Appel de l'API avec la ville passée en paramètre
         this.weatherAPI = retrofit.create(WeatherAPI.class);
         Call<JsonElement> call = weatherAPI.dataVille(ville);
         call.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                 if (response.isSuccessful()) {
+                    // Si la requête est un succès, on récupère les données et on les affiche
                     View rectangle = findViewById(R.id.rectangle_resultat);
                     TextView rectangleText = findViewById(R.id.rectangle_text);
                     TextView implicationSante = findViewById(R.id.implicationSante);
@@ -98,15 +94,13 @@ public class ResultatsActivity extends AppCompatActivity {
                         JsonObject jsonTemperature = jsonIaqi.getAsJsonObject("t");
                         String temperature = jsonTemperature.get("v").getAsString();
 
+                        // On affiche les données dans l'interface de l'utilisateur
                         tTemperature.setText(temperature + " °C");
-
                         notePollution = jsonData.get("aqi").getAsString();
                         tQualiteAir.setText(notePollution);
 
-
-
-
                         int note = Integer.parseInt(notePollution);
+                        // Affichage des conseils en fonction de la qualité de l'air actuelle
                         if (note < 50) {
                             rectangle.setBackgroundColor(ContextCompat.getColor(context, R.color.green));
                             rectangleText.setText(getString(R.string.QABon));
@@ -145,8 +139,8 @@ public class ResultatsActivity extends AppCompatActivity {
 
                         }
 
+                        // Gestion de l'historique des recherches
                         //Insertion dans la base de données de la ville et de la date actuelle dans la table historique
-                        //Insertion des valeurs dans la base de données
                         ContentValues valuesHistorique = new ContentValues();
                         valuesHistorique.put("utilisateur", utilisateur);
                         valuesHistorique.put("ville", ville);
@@ -156,7 +150,9 @@ public class ResultatsActivity extends AppCompatActivity {
                         String formattedDate = formatter.format(date);
                         valuesHistorique.put("date", formattedDate);
                         bd.insert("historique", null, valuesHistorique);
+
                     } else {
+                        // Si la ville n'est pas trouvée, on affiche un message d'erreur
                         rectangleText.setText(getString(R.string.VilleNonTrouvee));
                         //Ne plus afficher les informations inutiles
                         lTemperature.setVisibility(View.GONE);
@@ -167,6 +163,7 @@ public class ResultatsActivity extends AppCompatActivity {
                 }
             }
 
+            // Si la requête n'est pas un succès, on affiche un message d'erreur
             @Override
             public void onFailure(Call<JsonElement> call, Throwable t) {
                 Log.e(TAG, "Erreur : " + t.getMessage());
@@ -178,7 +175,6 @@ public class ResultatsActivity extends AppCompatActivity {
         TextView implicationSante = findViewById(R.id.implicationSante);
         TextView conseil = findViewById(R.id.conseil);
         if (!afficherConseils) {
-
             implicationSante.setVisibility(View.GONE);
             conseil.setVisibility(View.GONE);
         }
@@ -187,6 +183,7 @@ public class ResultatsActivity extends AppCompatActivity {
 
     }
 
+    // Gestion du menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflaterMenu = getMenuInflater();
@@ -194,6 +191,7 @@ public class ResultatsActivity extends AppCompatActivity {
         return true;
     }
 
+    // Gestion des actions du menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -216,7 +214,7 @@ public class ResultatsActivity extends AppCompatActivity {
                 break;
 
             case R.id.quitMenu:
-                System.exit(0);
+                this.finishAffinity();
                 break;
         }
         return true;

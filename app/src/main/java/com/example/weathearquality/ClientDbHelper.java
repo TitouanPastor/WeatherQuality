@@ -13,15 +13,19 @@ public class ClientDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "weatherQuality.db";
 
+    // Structure de la table utilisateur
     public final String SQL_CREATE_USER =
             "CREATE TABLE utilisateur (idUser INTEGER PRIMARY KEY AUTOINCREMENT, utilisateur TEXT, motdepasse TEXT);";
 
+    // Structure de la table historique
     public final String SQL_CREATE_HIST =
             "CREATE TABLE historique (idHistorique INTEGER PRIMARY KEY AUTOINCREMENT, utilisateur TEXT, ville TEXT, date TEXT);";
 
+    // Suppression de la table utilisateur
     public final String SQL_DELETE_USER =
             "DROP TABLE IF EXISTS utilisateur";
 
+    // Suppression de la table historique
     public final String SQL_DELETE_HIST =
             "DROP TABLE IF EXISTS historique";
 
@@ -42,6 +46,7 @@ public class ClientDbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Récupération de la ville et de la date de l'historique
     public ArrayList<String> getVille(String utilisateur) {
         ArrayList<String> arrayListVille = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();

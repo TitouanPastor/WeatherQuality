@@ -29,7 +29,7 @@
     <string name="QADangereux">Very polluted: High health risk</string>
     <string name="QATresDangereux">Dangerous air quality, serious health problem</string>
     <string name="ImplicationSante">"Health implication: "</string>
-    <string name="Conseil">Tip to apply:</string>
+    <string name="Conseil">Tip to apply : </string>
     <string name="HIBon">Air quality is considered satisfactory, and air pollution poses little or no risk.</string>
     <string name="HIMoyen">Air quality is acceptable. However, for some pollutants, there may be a health risk to a very small number of people who are usually sensitive to air pollution.</string>
     <string name="HIMauvais">Air quality is acceptable; however, for some pollutants, there may be a moderate health problem for a very small number of people who are particularly sensitive to air pollution.</string>
